@@ -4,7 +4,7 @@
 
 theme = {}
 
-theme.font          = "Bitstream Vera Sans Mono 9"
+theme.font          = "DejaVu Sans Mono"
 
 theme.bg_normal     = "#333333"
 theme.bg_focus      = "#535d6c"
