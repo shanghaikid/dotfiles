@@ -15,7 +15,7 @@ xterm*faceName: DejaVu Sans Mono
 xterm*faceSize: 9
 
 !URxvt
-urxvt*font: xft:DejaVu Sans Mono:size=9
+urxvt*font: xft:monaco:size=9
 URxvt.scrollBar:                false
 URxvt.saveLines:                5000
 URxvt.internalBorder:   0
