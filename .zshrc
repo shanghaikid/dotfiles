@@ -28,5 +28,5 @@ setopt EXTENDED_HISTORY
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 
-sudo mount -t vboxsf eclipse /home/shanghaikid/eclipse
-sudo mount -t vboxsf workspace /home/shanghaikid/workspace
+#sudo mount -t vboxsf eclipse /eclipse
+#sudo mount -t vboxsf workspace /workspace

@@ -11,7 +11,7 @@ Xcursor.theme:          Human
 *background:                    #262729
 *foreground:                    #FAFAFA
 
-xterm*faceName: DejaVu Sans Mono
+xterm*faceName: monaco 
 xterm*faceSize: 9
 
 !URxvt
