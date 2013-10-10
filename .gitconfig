@@ -7,3 +7,5 @@
         graph = log --graph --oneline --decorate
 [color]
 	ui = true
+[push]
+	default = simple
