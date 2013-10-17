@@ -18,6 +18,8 @@ alias gg="git log --graph --all"
 alias free="free -h"
 alias du.="du -h -d 0"
 alias vimsshconfig="vim ~/.ssh/config"
+alias kik="ssh-keygen -R"
+alias dstat="dstat -lamps"
 
 export HISTSIZE=10000
 export SAVEHIST=10000
