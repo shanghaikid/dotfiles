@@ -30,5 +30,7 @@ setopt EXTENDED_HISTORY
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 
+source ~/git-flow-completion.zsh
+
 #sudo mount -t vboxsf eclipse /eclipse
 #sudo mount -t vboxsf workspace /workspace
