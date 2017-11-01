@@ -1,0 +1,69 @@
+let mapleader="," " set the map leader as -
+filetype plugin on
+filetype indent on " allow indent on
+syntax on " syntax highlight
+set tabstop=4 " set the tab using 4 spaces
+set shiftwidth=4 
+set smarttab "set number numberwidth=4
+set autoindent  " allow auto indention
+set history=700 "allow 700 history to be record
+set ruler
+set encoding=utf8
+
+" status line {
+set laststatus=2
+set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \ 
+set statusline+=\ \ \ [%{&ff}/%Y] 
+set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\ 
+set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
+
+function! CurDir()
+    let curdir = substitute(getcwd(), $HOME, "~", "")
+    return curdir
+endfunction
+
+function! HasPaste()
+    if &paste
+        return '[PASTE]'
+    else
+        return ''
+    endif
+endfunction
+
+"}
+
+
+if has("autocmd")
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
+
+" ctrl + hkkl : go to another splited window
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" splite
+set splitbelow
+set splitright
+" new tab
+map <C-t><C-t> :tabnew<CR>
+" close tab
+map <C-t><C-w> :tabclose<CR>
+" ,p toggles paste mode
+nmap <leader>p :set paste!<BAR>set paste?<CR>
+
+" map esc
+inoremap jk <esc> 
+inoremap <esc> <nop>
+
+" Upcase in insert mode and return insert mode at the end of last word 
+inoremap <c-u> <esc>viwUea
+" open my vimrc in a vertical window
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+" load my vimrc 
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+
+" ======================================"
+iabbrev @@ jiangruiyi@gmail.com
+
