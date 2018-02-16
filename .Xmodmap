@@ -1,0 +1,14 @@
+keycode 37 = Control_L
+keycode 133 = Alt_L Meta_L
+keycode 64 = Super_L
+keycode 108 = Super_R
+
+clear Shift
+clear Lock
+clear Control
+clear Mod4
+
+add Shift = Shift_L Shift_R
+add Lock = Caps_lock
+add Control = Control_L Control_R
+add Mod4 = Super_L Super_R
