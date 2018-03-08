@@ -1,10 +1,12 @@
-let mapleader="," " set the map leader as -
+let mapleader="`" " set the map leader as -
 filetype plugin on
 filetype indent on " allow indent on
 syntax on " syntax highlight
+set number
 set tabstop=4 " set the tab using 4 spaces
 set shiftwidth=4 
 set smarttab "set number numberwidth=4
+set expandtab " Expand tabs to spaces
 set autoindent  " allow auto indention
 set history=700 "allow 700 history to be record
 set ruler
@@ -42,13 +44,20 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
 " splite
 set splitbelow
 set splitright
+
 " new tab
-map <C-t><C-t> :tabnew<CR>
+map <C-t> :tabnew<CR>
+map <C-n> :tabnew<CR>
 " close tab
-map <C-t><C-w> :tabclose<CR>
+map <c-w> :tabclose<CR>
+" next tab
+map <C-]> :tabn<CR> " previous tab
+map <C-[> :tabp<CR>
+
 " ,p toggles paste mode
 nmap <leader>p :set paste!<BAR>set paste?<CR>
 
@@ -59,11 +68,28 @@ inoremap <esc> <nop>
 " Upcase in insert mode and return insert mode at the end of last word 
 inoremap <c-u> <esc>viwUea
 " open my vimrc in a vertical window
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-" load my vimrc 
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>vs :vsplit $MYVIMRC<cr>
+" load my vimrc
+nnoremap <leader>rc :source $MYVIMRC<cr>
 
 
 " ======================================"
 iabbrev @@ jiangruiyi@gmail.com
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
+
+imap <c-p><c-p> <plug>(fzf-complete-line)
+imap <c-p><c-k> <plug>(fzf-complete-word)
+imap <c-p><c-f> <plug>(fzf-complete-path)
 

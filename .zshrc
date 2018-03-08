@@ -30,3 +30,10 @@ setopt EXTENDED_HISTORY
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_COMMAND='ag --ignore .git -g ""'

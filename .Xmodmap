@@ -1,14 +1,16 @@
-keycode 37 = Control_L
-keycode 133 = Alt_L Meta_L
-keycode 64 = Super_L
-keycode 108 = Super_R
+keycode 128 = Insert
+!clear most of the modifiers
+clear control
+clear mod4
+clear mod1
 
-clear Shift
-clear Lock
-clear Control
-clear Mod4
+! left
+! keycode 64 is the left alt key
+keycode 64 = Meta_L
+! keycode 133 is the left cmd key
+keycode 133 = Super_L 
 
-add Shift = Shift_L Shift_R
-add Lock = Caps_lock
-add Control = Control_L Control_R
-add Mod4 = Super_L Super_R
+
+add mod1 = Meta_L
+add mod4 = Super_L
+add control = Control_L Control_R
