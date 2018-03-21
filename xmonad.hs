@@ -14,7 +14,7 @@ main = xmonad $ desktopConfig
 	`additionalKeys` [((mod4Mask, xK_p), spawn "rofi -show run")]
 
 myTerminal = "urxvt"
-myNormalBorderColor = "#7c7c7c"
-myFocusedBorderColor = "#ffb6b0"
+myNormalBorderColor = "#090300"
+myFocusedBorderColor = "#01a252"
 
 
