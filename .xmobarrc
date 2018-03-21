@@ -24,8 +24,9 @@ Config { font = "xft:inconsolata:size=12:antialias=true:hinting=true"
 			, Run Memory ["-t", "Mem: <used>M Used <free>M Free"] 10
 			, Run Swap [] 10
 			, Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+            , Run StdinReader
 			]
 , sepChar = "%"
 , alignSep = "}{"
-, template = "%cpu% | %memory% | %wlp1s0b1%}{ %ZSPD% | <fc=#ee9a00>%date%</fc> | %battery%"
+, template = "%cpu% | %memory% | %StdinReader% | %wlp1s0b1%}{ %ZSPD% | <fc=#ee9a00>%date%</fc> | %battery%"
 }

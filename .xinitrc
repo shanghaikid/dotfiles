@@ -1,5 +1,5 @@
 xmodmap ~/.Xmodmap
-feh --bg-fill ~/dotfiles/wall/b.jpg &
-xmobar &
+feh --bg-fill ~/dotfiles/wall/c.jpg &
+i3status | xmobar &
 rofi &
 exec xmonad
