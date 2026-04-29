@@ -1,7 +1,5 @@
 export EDITOR="vim"
 
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":/Users/zilliz/.zsh/completions:"* ]]; then export FPATH="/Users/zilliz/.zsh/completions:$FPATH"; fi
 autoload -U compinit promptinit
 compinit
 promptinit
@@ -48,23 +46,22 @@ alias setproxy='export HTTP_PROXY=http://127.0.0.1:7890; export HTTPS_PROXY=http
 # 取消 HTTP 和 HTTPS 代理
 alias unsetproxy='unset HTTP_PROXY; unset HTTPS_PROXY; unset ALL_PROXY'
 
-. "/Users/zilliz/.deno/env"
 export PATH="$HOME/.local/bin:$PATH"
 
 gpgconf --launch gpg-agent
 
 # bun completions
-[ -s "/Users/zilliz/.bun/_bun" ] && source "/Users/zilliz/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Added by Antigravity
-export PATH="/Users/zilliz/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 # opencode
-export PATH=/Users/zilliz/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"
 
 
 
