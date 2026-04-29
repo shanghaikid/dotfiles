@@ -49,24 +49,16 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
-" new tab
-map <C-t> :tabnew<CR>
-map <C-n> :tabnew<CR>
-" close tab
-map <c-w> :tabclose<CR>
-" next tab
-map <C-]> :tabn<CR> " previous tab
-map <C-[> :tabp<CR>
+set shortmess=F
 
 " ,p toggles paste mode
 nmap <leader>p :set paste!<BAR>set paste?<CR>
 
 " map esc
 inoremap jk <esc> 
-inoremap <esc> <nop>
 
-" Upcase in insert mode and return insert mode at the end of last word 
-inoremap <c-u> <esc>viwUea
+set cmdheight=2
+
 " open my vimrc in a vertical window
 nnoremap <leader>vs :vsplit $MYVIMRC<cr>
 " load my vimrc
