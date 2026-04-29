@@ -1,0 +1,10 @@
+.DS_Store
+
+# Pi agent runtime/local data; keep only portable config in git.
+pi-agent/auth.json
+pi-agent/sessions/
+pi-agent/bin/
+pi-agent/git/
+pi-agent/npm/
+pi-agent/secrets/
+pi-agent/.dotfiles-backup-*/

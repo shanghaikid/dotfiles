@@ -1,0 +1,5 @@
+{
+  "lastChangelogVersion": "0.70.6",
+  "defaultProvider": "token-zasdas",
+  "defaultModel": "claude-opus-4-7"
+}
