@@ -6,7 +6,7 @@ This directory stores the portable parts of `~/.pi/agent`.
 
 ## 目录映射
 
-当前约定：把可移植配置放在 `~/dotfiles/pi-agent/`，再从 `~/.pi/agent/` 用符号链接指过去。
+当前约定：把可移植配置放在 `~/dotfiles/pi-agent/`，本机配置只保留指向 dotfiles 的符号链接。
 
 ```text
 ~/.pi/agent/APPEND_SYSTEM.md -> ~/dotfiles/pi-agent/APPEND_SYSTEM.md
@@ -14,7 +14,10 @@ This directory stores the portable parts of `~/.pi/agent`.
 ~/.pi/agent/models.json      -> ~/dotfiles/pi-agent/models.json
 ~/.pi/agent/extensions       -> ~/dotfiles/pi-agent/extensions
 ~/.pi/agent/skills           -> ~/dotfiles/pi-agent/skills
+~/.agents/skills             -> ~/dotfiles/pi-agent/skills
 ```
+
+`~/.agents/skills` 也指向同一份 skills，这样其他兼容 Agent Skills 的工具和 pi 使用的是同一份本机配置，不再维护独立副本。
 
 如果以后增加这些文件/目录，也可以按同样方式纳入 dotfiles：
 
@@ -66,6 +69,9 @@ ln -s ~/dotfiles/pi-agent/settings.json ~/.pi/agent/settings.json
 ln -s ~/dotfiles/pi-agent/models.json ~/.pi/agent/models.json
 ln -s ~/dotfiles/pi-agent/extensions ~/.pi/agent/extensions
 ln -s ~/dotfiles/pi-agent/skills ~/.pi/agent/skills
+
+mkdir -p ~/.agents
+ln -s ~/dotfiles/pi-agent/skills ~/.agents/skills
 ```
 
 如果目标文件已经存在，可以先备份：
@@ -73,6 +79,7 @@ ln -s ~/dotfiles/pi-agent/skills ~/.pi/agent/skills
 ```bash
 mkdir -p ~/.pi/agent/.manual-backup-$(date +%Y%m%d-%H%M%S)
 # 然后把已有文件/目录 mv 进去，再重新 ln -s
+# ~/.agents/skills 已存在时也一样，先备份/删除再链接到 ~/dotfiles/pi-agent/skills
 ```
 
 ## 日常更新方式
