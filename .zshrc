@@ -48,7 +48,7 @@ alias unsetproxy='unset HTTP_PROXY; unset HTTPS_PROXY; unset ALL_PROXY'
 
 export PATH="$HOME/.local/bin:$PATH"
 
-gpgconf --launch gpg-agent
+# GnuPG starts gpg-agent on demand; avoid blocking every new terminal shell.
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"

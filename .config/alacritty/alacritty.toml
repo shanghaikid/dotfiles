@@ -1,0 +1,119 @@
+# Tokyo Night palette shared with the tmux tab bar.
+[general]
+live_config_reload = true
+
+[env]
+TERM = "alacritty"
+
+[window]
+padding = { x = 12, y = 24 }
+dynamic_padding = true
+decorations = "Transparent"
+startup_mode = "Maximized"
+opacity = 1.0
+blur = false
+option_as_alt = "Both"
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Light" }
+bold = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+italic = { family = "JetBrainsMono Nerd Font Mono", style = "Light Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
+size = 11.0
+
+[colors.primary]
+background = "#1a1b26"
+foreground = "#c0caf5"
+
+[colors.cursor]
+cursor = "#7aa2f7"
+text = "#1a1b26"
+
+[colors.selection]
+background = "#283457"
+text = "#c0caf5"
+
+[colors.normal]
+black = "#15161e"
+red = "#f7768e"
+green = "#9ece6a"
+yellow = "#e0af68"
+blue = "#7aa2f7"
+magenta = "#bb9af7"
+cyan = "#7dcfff"
+white = "#a9b1d6"
+
+[colors.bright]
+black = "#414868"
+red = "#ff899d"
+green = "#9fe044"
+yellow = "#faba4a"
+blue = "#8db0ff"
+magenta = "#c7a9ff"
+cyan = "#a4daff"
+white = "#c0caf5"
+
+[cursor]
+style = { shape = "Block", blinking = "Never" }
+
+[scrolling]
+history = 100000
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+hide_when_typing = true
+
+# Reopen the same tmux session; no changes to the shell used by other apps.
+[terminal.shell]
+program = "/bin/sh"
+# GUI apps may not inherit Homebrew PATH; support Apple Silicon and Intel Macs.
+args = ["-c", 'export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"; exec tmux new-session -A -s alacritty']
+
+# Send tmux's Ctrl-B prefix plus a key. Normal Ctrl-B still works.
+[keyboard]
+bindings = [
+  { key = "F", mods = "Command|Control", action = "ToggleMaximized" },
+  { key = "D", mods = "Command", chars = "\u0002%" },
+  { key = "D", mods = "Command|Shift", chars = "\u0002\"" },
+  { key = "Enter", mods = "Command|Shift", chars = "\u0002%" },
+  { key = "Minus", mods = "Command|Shift", chars = "\u0002\"" },
+  { key = "_", mods = "Command|Shift", chars = "\u0002\"" },
+  { key = "T", mods = "Command", chars = "\u0002c" },
+  { key = "W", mods = "Command", chars = "\u0002x" },
+  # Vim-style pane navigation. macOS also needs the Hide menu shortcut remapped
+  # in org.alacritty's NSUserKeyEquivalents; install-terminal.sh configures this on macOS.
+  { key = "H", mods = "Command", chars = "\u0002h" },
+  { key = "J", mods = "Command", chars = "\u0002j" },
+  { key = "K", mods = "Command", chars = "\u0002k" },
+  { key = "L", mods = "Command", chars = "\u0002l" },
+  { key = "Left", mods = "Command|Alt", chars = "\u0002\u001b[D" },
+  { key = "Right", mods = "Command|Alt", chars = "\u0002\u001b[C" },
+  { key = "Up", mods = "Command|Alt", chars = "\u0002\u001b[A" },
+  { key = "Down", mods = "Command|Alt", chars = "\u0002\u001b[B" },
+  { key = "Left", mods = "Command|Shift", chars = "\u0002\u001b[1;5D" },
+  { key = "Right", mods = "Command|Shift", chars = "\u0002\u001b[1;5C" },
+  { key = "Up", mods = "Command|Shift", chars = "\u0002\u001b[1;5A" },
+  { key = "Down", mods = "Command|Shift", chars = "\u0002\u001b[1;5B" },
+  { key = "Tab", mods = "Control", chars = "\u0002n" },
+  { key = "Tab", mods = "Control|Shift", chars = "\u0002p" },
+  # Switch tmux tabs instead of Alacritty's native tabs.
+  { key = "[", mods = "Command|Shift", chars = "\u0002p" },
+  { key = "]", mods = "Command|Shift", chars = "\u0002n" },
+  # Shift can make these logical keys { and } (for example, US input layouts).
+  { key = "{", mods = "Command|Shift", chars = "\u0002p" },
+  { key = "}", mods = "Command|Shift", chars = "\u0002n" },
+  { key = "1", mods = "Command", chars = "\u00021" },
+  { key = "2", mods = "Command", chars = "\u00022" },
+  { key = "3", mods = "Command", chars = "\u00023" },
+  { key = "4", mods = "Command", chars = "\u00024" },
+  { key = "5", mods = "Command", chars = "\u00025" },
+  { key = "6", mods = "Command", chars = "\u00026" },
+  { key = "7", mods = "Command", chars = "\u00027" },
+  { key = "8", mods = "Command", chars = "\u00028" },
+  { key = "9", mods = "Command", chars = "\u00029" },
+  { key = "Equals", mods = "Command", action = "IncreaseFontSize" },
+  { key = "Minus", mods = "Command", action = "DecreaseFontSize" },
+  { key = "0", mods = "Command", action = "ResetFontSize" },
+]
