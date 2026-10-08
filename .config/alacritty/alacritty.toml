@@ -1,69 +1,6 @@
-# Tokyo Night palette shared with the tmux tab bar.
-[general]
-live_config_reload = true
-
-[env]
-TERM = "alacritty"
-
-[window]
-padding = { x = 12, y = 24 }
-dynamic_padding = true
-decorations = "Transparent"
-startup_mode = "Maximized"
-opacity = 1.0
-blur = false
-option_as_alt = "Both"
-
-[font]
-normal = { family = "JetBrainsMono Nerd Font Mono", style = "Light" }
-bold = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
-italic = { family = "JetBrainsMono Nerd Font Mono", style = "Light Italic" }
-bold_italic = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
-size = 11.0
-
-[colors.primary]
-background = "#1a1b26"
-foreground = "#c0caf5"
-
-[colors.cursor]
-cursor = "#7aa2f7"
-text = "#1a1b26"
-
-[colors.selection]
-background = "#283457"
-text = "#c0caf5"
-
-[colors.normal]
-black = "#15161e"
-red = "#f7768e"
-green = "#9ece6a"
-yellow = "#e0af68"
-blue = "#7aa2f7"
-magenta = "#bb9af7"
-cyan = "#7dcfff"
-white = "#a9b1d6"
-
-[colors.bright]
-black = "#414868"
-red = "#ff899d"
-green = "#9fe044"
-yellow = "#faba4a"
-blue = "#8db0ff"
-magenta = "#c7a9ff"
-cyan = "#a4daff"
-white = "#c0caf5"
-
-[cursor]
-style = { shape = "Block", blinking = "Never" }
-
-[scrolling]
-history = 100000
-
-[selection]
-save_to_clipboard = true
-
-[mouse]
-hide_when_typing = true
+# tmux integration for https://github.com/shanghaikid/alacritty (macos-ime-fix).
+# Theme, fonts, window behavior and native shortcuts are built into that fork.
+# See its LOCAL-DEFAULTS.md; only tmux-specific settings belong here.
 
 # Reopen the same tmux session; no changes to the shell used by other apps.
 [terminal.shell]
@@ -74,7 +11,6 @@ args = ["-c", 'export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:$P
 # Send tmux's Ctrl-B prefix plus a key. Normal Ctrl-B still works.
 [keyboard]
 bindings = [
-  { key = "F", mods = "Command|Control", action = "ToggleMaximized" },
   { key = "D", mods = "Command", chars = "\u0002%" },
   { key = "D", mods = "Command|Shift", chars = "\u0002\"" },
   { key = "Enter", mods = "Command|Shift", chars = "\u0002%" },
@@ -113,7 +49,4 @@ bindings = [
   { key = "7", mods = "Command", chars = "\u00027" },
   { key = "8", mods = "Command", chars = "\u00028" },
   { key = "9", mods = "Command", chars = "\u00029" },
-  { key = "Equals", mods = "Command", action = "IncreaseFontSize" },
-  { key = "Minus", mods = "Command", action = "DecreaseFontSize" },
-  { key = "0", mods = "Command", action = "ResetFontSize" },
 ]

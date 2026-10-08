@@ -4,25 +4,40 @@ just some arch linux config file...
 
 ## Alacritty + tmux (macOS)
 
-The shared terminal setup includes the Tokyo Night palette, tmux tabs/splits,
-macOS Command shortcuts, clipboard integration, and short `directory · branch`
-tab labels. No tmux plugins are required.
+Our [Alacritty fork](https://github.com/shanghaikid/alacritty) includes the
+Tokyo Night palette, JetBrains Nerd Font, window preferences, scrolling and
+clipboard settings, native macOS shortcuts, and the Baidu Pinyin Shift/Enter
+fix. These are built into the app and do not need a user configuration file.
+
+This repository adds tmux startup, tabs/splits, Command shortcuts for tmux,
+and short `directory · branch` tab labels. The Alacritty configuration contains
+only that tmux integration. No tmux plugins are required.
 
 ### First install on another Mac
 
-Install [Alacritty](https://github.com/alacritty/alacritty/releases) from its
-official macOS release, plus tmux, Git, and the configured font:
+Use our fork's `macos-ime-fix` branch with built-in defaults (commit `6b3d423`
+or later). With Homebrew and Xcode Command Line Tools installed, build the
+complete `.app` bundle so its fonts are included:
 
 ```sh
-brew install tmux git
-brew install --cask font-jetbrains-mono-nerd-font
+brew install tmux git rust scdoc
+mkdir -p ~/workspace
+git clone --branch macos-ime-fix https://github.com/shanghaikid/alacritty.git ~/workspace/alacritty
+cd ~/workspace/alacritty
+make app
+ditto target/release/osx/Alacritty.app /Applications/Alacritty.app
+
 git clone git@github.com:shanghaikid/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./install-terminal.sh
 ```
 
-If the repository already exists, use `git pull --ff-only` before running the
-installer. Alacritty 0.17 and tmux 3.7 are the versions used to verify this setup.
+If either repository already exists, use `git pull --ff-only` in that checkout
+instead of cloning it again. A separate font installation is unnecessary.
+See the fork's [build and defaults documentation](https://github.com/shanghaikid/alacritty/blob/macos-ime-fix/LOCAL-DEFAULTS.md)
+for universal Intel/Apple Silicon bundles. Alacritty 0.17 and tmux 3.7 are the
+versions used to verify this setup. Official Alacritty builds can use the tmux
+integration, but will use their own appearance defaults and lack our IME fix.
 
 The installer links these files and backs up existing files under
 `~/.dotfiles-backups/terminal-*`:
@@ -48,7 +63,17 @@ tmux source-file ~/.tmux.conf  # needed only if tmux is already running
 ```
 
 The symlinks pick up new repository content directly. Alacritty reloads its
-appearance and bindings automatically; shell-launcher changes require a restart.
+tmux bindings automatically; shell-launcher changes require a restart.
+
+Appearance, fonts, and native defaults are maintained in the Alacritty fork.
+To update those, rebuild and replace the app, then reopen Alacritty:
+
+```sh
+cd ~/workspace/alacritty
+git pull --ff-only
+make app
+ditto target/release/osx/Alacritty.app /Applications/Alacritty.app
+```
 
 ### Shortcuts
 
