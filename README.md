@@ -69,6 +69,11 @@ five seconds. Directory names are capped at 24 characters and branches at 16;
 long names end with `…`. Home appears as `~`, non-Git directories show only their
 name, and detached Git HEADs show a short commit ID.
 
+History scrolling uses one line per wheel event to keep Mac trackpad gestures
+responsive. This changes tmux copy-mode scrolling only; mouse-aware applications
+keep their own scrolling behavior. Use PageUp/PageDown in copy mode for large
+jumps. Long files can also be read directly with `less --mouse file.md`.
+
 ## Pi agent config
 
 Portable pi agent config lives in `pi-agent/` and is linked from `~/.pi/agent/`.
