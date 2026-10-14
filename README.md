@@ -5,13 +5,14 @@ just some arch linux config file...
 ## Alacritty + tmux (macOS)
 
 Our [Alacritty fork](https://github.com/shanghaikid/alacritty) includes the
-Tokyo Night palette, JetBrains Nerd Font, window preferences, scrolling and
+Catppuccin Mocha palette, JetBrains Nerd Font, window preferences, scrolling and
 clipboard settings, native macOS shortcuts, and the Baidu Pinyin Shift/Enter
 fix. These are built into the app and do not need a user configuration file.
 
 This repository adds tmux startup, tabs/splits, Command shortcuts for tmux,
 and short `directory · branch` tab labels. The Alacritty configuration contains
-only that tmux integration. No tmux plugins are required.
+only that tmux integration. The tab bar uses Mocha colors with a mauve active
+tab. No tmux plugins are required.
 
 ### First install on another Mac
 
