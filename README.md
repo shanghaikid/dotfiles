@@ -80,6 +80,7 @@ ditto target/release/osx/Alacritty.app /Applications/Alacritty.app
 
 | Shortcut | Action |
 | --- | --- |
+| Shift-Enter | Newline in Codex (the fork sends Ctrl-J in legacy input mode) |
 | Command-T | New tmux tab in the current directory |
 | Command-Shift-[ / ] | Previous / next tab |
 | Control-Tab / Control-Shift-Tab | Next / previous tab |
