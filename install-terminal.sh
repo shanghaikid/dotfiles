@@ -4,7 +4,7 @@ set -euo pipefail
 repo_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
 
-for tool in tmux git; do
+for tool in tmux git python3; do
     if ! command -v "$tool" >/dev/null 2>&1; then
         printf 'Missing dependency: %s. See README.md.\n' "$tool" >&2
         exit 1
@@ -35,6 +35,7 @@ link_file() {
 link_file .tmux.conf
 link_file .config/alacritty/alacritty.toml
 link_file .config/tmux/window-name
+python3 "$repo_dir/terminal/install-codex-status.py"
 
 if [[ $(uname -s) == Darwin ]]; then
     # Free Command-H for pane navigation, preserving other menu customizations.

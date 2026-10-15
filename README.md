@@ -21,7 +21,7 @@ or later). With Homebrew and Xcode Command Line Tools installed, build the
 complete `.app` bundle so its fonts are included:
 
 ```sh
-brew install tmux git rust scdoc
+brew install tmux git rust scdoc python
 mkdir -p ~/workspace
 git clone --branch macos-ime-fix https://github.com/shanghaikid/alacritty.git ~/workspace/alacritty
 cd ~/workspace/alacritty
@@ -114,6 +114,38 @@ The normal launcher uses the new default server after its old sessions finish.
 Do not kill an active server just to upgrade it. Plain Alacritty windows use
 the protocol after reopening the updated app. See the fork's
 [protocol behavior and measured performance](https://github.com/shanghaikid/alacritty/blob/macos-ime-fix/OSC7501.md).
+
+### Automatic Codex status
+
+`./install-terminal.sh` also installs the Codex status reporter and merges its
+entries into `~/.codex/hooks.json`, preserving other hooks and making a backup.
+For an existing installation, install just this integration with:
+
+```sh
+python3 ~/dotfiles/terminal/install-codex-status.py
+```
+
+In Codex, run `/hooks`, review and trust the entries whose command is
+`"$HOME/.local/bin/codex-program-status" "$PPID"`. Then resume/reopen the Codex
+session if it has not reloaded the hook list. Restarting Alacritty alone does
+not enable a Codex hook. Codex requires trust for each new/changed definition;
+the installer never changes trust settings. See the official
+[Codex hooks documentation](https://learn.chatgpt.com/docs/hooks).
+
+Submitting a prompt reports `[working]`; approval requests report `[permission]`;
+completing the turn reports `[done]`. Interrupting returns to idle and closing
+Codex clears its report. Synchronous `request_user_input` calls report
+`[question]`. Asynchronous question tools are not covered. An approval badge
+clears when the corresponding tool returns, since hooks have no separate
+approval-resolved event. A different tool finishing does not clear it.
+
+Reports go directly to the terminal belonging to that Codex process, including
+inactive tmux panes. No prompt, command, tool output or transcript is sent to
+the terminal title or saved in status files. Headless daemon sessions without
+a terminal are skipped. The reporter sends lifecycle changes; it does not
+poll terminals or inspect screen content. It needs Python 3 and uses only the
+standard library. Persistent sessions need the hook install/trust step once;
+future pulls update the linked reporter automatically.
 
 ### Shortcuts
 
