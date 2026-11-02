@@ -6,13 +6,13 @@ promptinit
 
 # Prompt
 autoload -Uz vcs_info
-zstyle ':vcs_info:git:*' formats ' %F{214}⎇ %b%f'  # 橙黄色 git 分支
+zstyle ':vcs_info:git:*' formats ' %F{yellow}⎇ %b%f'  # 跟随终端主题的 Git 分支颜色
 precmd() { vcs_info }
 setopt PROMPT_SUBST
 
-# 青色路径 + 橙黄色 git 分支 + 绿色/红色提示符
-PROMPT='%F{81}%~%f${vcs_info_msg_0_} %(?.%F{119}❯.%F{203}❯)%f '
-RPROMPT='%F{243}%*%f'  # 更柔和的灰色时间
+# 使用终端主题的标准色：蓝色路径、黄色分支、绿色/红色提示符
+PROMPT='%F{blue}%~%f${vcs_info_msg_0_} %(?.%F{green}❯.%F{red}❯)%f '
+RPROMPT='%F{8}%*%f'  # 跟随主题的次要文字颜色
 alias ll="ls -al -G"
 alias vi="vim"
 alias vim="vim -p"
