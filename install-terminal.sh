@@ -33,7 +33,12 @@ link_file() {
 }
 
 link_file .tmux.conf
-link_file .config/alacritty/alacritty.toml
+# Keep the native Merino switcher and its import of the shared dotfiles config.
+if [[ -f "$HOME/.config/alacritty/theme.conf" && -f "$HOME/.config/alacritty/alacritty.toml" ]]; then
+    printf 'Keeping managed Alacritty theme configuration.\n'
+else
+    link_file .config/alacritty/alacritty.toml
+fi
 link_file .config/tmux/window-name
 python3 "$repo_dir/terminal/install-codex-status.py"
 
@@ -44,7 +49,11 @@ if [[ $(uname -s) == Darwin ]]; then
 fi
 
 if tmux has-session 2>/dev/null; then
-    tmux source-file "$HOME/.tmux.conf"
+    reload_config="$HOME/.tmux.conf"
+    if [[ -f "$HOME/.config/alacritty/theme.conf" && -f "$HOME/.config/alacritty/tmux.conf" ]]; then
+        reload_config="$HOME/.config/alacritty/tmux.conf"
+    fi
+    tmux source-file "$reload_config"
     printf 'Reloaded the running tmux configuration.\n'
 fi
 printf 'Terminal configuration installed. Future git pulls update these links.\n'
